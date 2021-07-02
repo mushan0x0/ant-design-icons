@@ -38,7 +38,9 @@ class Icon extends React.Component<IconProps> {
   static definitions = new MiniMap<IconDefinition>();
   static add(...icons: IconDefinition[]) {
     icons.forEach((icon) => {
-      this.definitions.set(withSuffix(icon.name, icon.theme), icon);
+      if (icon.name) {
+        this.definitions.set(withSuffix(icon.name, icon.theme), icon);
+      }
     });
   }
   static clear() {
